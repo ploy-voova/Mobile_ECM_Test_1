@@ -1,0 +1,625 @@
+<ion-header>
+  <ion-toolbar style="background-color: white;">
+    <app-explore-header></app-explore-header>
+    <!-- <ion-row style="background-color: white; border: 5px #ffff; ">Create a new quote</ion-row> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row style="display: flex; align-items: center; justify-content: center; padding-bottom: 5px;">
+      <ion-col style="display: flex; align-items: center; justify-content: center;">
+        <ion-button class="custom-btn">
+          Create a new Quote
+        </ion-button>
+      </ion-col>
+      <ion-col style="display: flex; align-items: center; justify-content: center;">
+        <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Select Profile">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+        </ion-select>
+        <!-- <ion-button class="custom-btn-dot">
+          Select Profile
+          <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="display: flex; align-items: center; justify-content: center;">
+        <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Job Categojy">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+        </ion-select>
+        <!-- <ion-button class="custom-btn-dot">
+          Job Categojy
+          <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+      <ion-col style="display: flex; align-items: center; justify-content: center;">
+        <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Job Prototype">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+        </ion-select>
+        <!-- <ion-button class="custom-btn-dot">
+          Job Prototype
+          <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+      <ion-col style="display: flex; align-items: center; justify-content: center;">
+        <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Journey Type">
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+          <ion-select-option value="apples">Apples</ion-select-option>
+        </ion-select>
+        <!-- <ion-button class="custom-btn-dot">
+          Journey Type
+          <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+        </ion-button> -->
+      </ion-col>
+    </ion-row>
+
+    <!-- dropdown -->
+    <ion-row style="padding-top: 5%;">
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowCus()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="person-outline"></ion-icon>
+            | Customer
+          </span>
+        </ion-button>
+
+        <!-- //Row input Customer// -->
+        <ion-row *ngIf="isRowvisibleCus" style="margin-top: 10px;">
+          <ion-row style="padding: 0; margin: 0; ">
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none">
+                <ion-input class="custom-input" placeholder=" Company/Account"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none">
+                <ion-input class="custom-input" placeholder=" Email"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none">
+                <ion-input class="custom-input" placeholder=" External Reference"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none">
+                <ion-input class="custom-input" placeholder=" Name"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none" class="padding">
+                <ion-input class="custom-input" placeholder=" Referrer Code"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none" class="padding">
+                <ion-input class="custom-input" placeholder=" Phone"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12">
+              <h1>Passenger</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none" class="padding">
+                <ion-input class="custom-input" placeholder=" Passenger Email"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none" class="padding">
+                <ion-input class="custom-input" placeholder=" Passenger Name"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="6" class="padding">
+              <ion-item lines="none" class="padding">
+                <ion-input class="custom-input" placeholder=" Passenger Number"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+
+      <!-- ///////////////////////////////////////// -->
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowTran()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="bus-outline"></ion-icon>
+            | Transport
+          </span>
+        </ion-button>
+
+        <!-- //Row input Transport -->
+        <ion-row *ngIf="isRowvisibleTran" style="margin-top: 10px;">
+          <ion-col size-xs="3.5" style="display: flex; align-items: center; justify-content: center;">
+            <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Select Pax">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+            <!-- <ion-button class="custom-btn-dot">
+              Select Pax
+              <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+            </ion-button> -->
+          </ion-col>
+          <ion-col size-xs="4" style="display: flex; align-items: center; justify-content: center;">
+            <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Select Vehicle">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+            <!-- <ion-button class="custom-btn-dot">
+              Select Vehicle
+              <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+            </ion-button> -->
+          </ion-col>
+          <ion-col size-xs="4.5" style="display: flex; align-items: center; justify-content: center;">
+            <ion-select class="custom-btn-dot" aria-label="Fruit" interface="popover" placeholder="Select Luggage">
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+            <!-- <ion-button class="custom-btn-dot">
+              Select Luggage
+              <ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+            </ion-button> -->
+          </ion-col>
+          <ion-col size-xs="6" style="display: flex; align-items: center; justify-content: flex-end;">
+            <ion-button class="custom-btn-dot2">
+              Actual Mileage (miles)
+            </ion-button>
+          </ion-col>
+
+          <ion-col size-xs="6" style="display: flex; align-items: center; justify-content: flex-start;">
+            <ion-button class="custom-btn-dot2">
+              Actual Time 00<ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+              00<ion-icon slot="end" class="icon" name="chevron-collapse-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <!-- ////////////////////////////////// -->
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowPricing()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="cash-outline"></ion-icon>
+            | Pricing
+          </span>
+        </ion-button>
+
+        <!-- //Row Pricing// -->
+        <ion-row *ngIf="isRowvisiblePricing" style="padding-bottom: 8%;">
+          <ion-row style="padding-top: 5%; padding-left: 3%; ">
+            <ion-col size-xs="6">
+              <ion-input class="custom-input-pricing" placeholder=" Vehicle Price"></ion-input>
+            </ion-col>
+            <ion-col size-xs="6">
+              <ion-input class="custom-input-pricing" placeholder=" Total Price"></ion-input>
+            </ion-col>
+
+            <ion-col size-xs="6">
+              <ion-input class="custom-input-pricing" placeholder=" Deposit"></ion-input>
+            </ion-col>
+            <ion-col size-xs="6">
+              <ion-input class="custom-input-pricing" placeholder=" Deposit Amount"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <!-- ////////////////// -->
+          <ion-col size-xs="12" class="padding">
+            <h1 class="font">Added Options</h1>
+          </ion-col>
+          <ion-row>
+            <ion-col size-xs="6" style="display: flex;  justify-content: flex-start; padding-left: 10%;">
+              <ion-checkbox class="checkbox" labelPlacement="end">ITEM 004</ion-checkbox>
+            </ion-col>
+            <ion-col size-xs="6" style="display: flex; align-items: center; justify-content: center;">
+              <span class="inner-span">
+                <ion-item lines="none" class="padding" style="margin-top: -12px;">
+                  <p class="font-12">$</p>
+                  <ion-input class="custom-input-pricing-Add"></ion-input>
+                  <ion-icon class="set-alert-circle" name="alert-circle-outline"></ion-icon>
+                </ion-item>
+              </span>
+            </ion-col>
+            <ion-col size-xs="6" style="display: flex; justify-content: flex-start; padding-left: 10%; ">
+              <ion-checkbox class="checkbox" labelPlacement="end">Oil TEST Extra it...</ion-checkbox>
+            </ion-col>
+            <ion-col size-xs="6" style="display: flex; align-items: center; justify-content: center;">
+              <span class="inner-span">
+                <ion-item lines="none" class="padding" style="margin-top: -12px;">
+                  <p class="font-12">$</p>
+                  <ion-input class="custom-input-pricing-Add"></ion-input>
+                  <ion-icon class="set-alert-circle" name="alert-circle-outline"></ion-icon>
+                </ion-item>
+              </span>
+            </ion-col>
+            <ion-col size-xs="6" style="display: flex; justify-content: flex-start; padding-left: 10%;">
+              <ion-checkbox class="checkbox" labelPlacement="end">Oil TEST Extra it...</ion-checkbox>
+            </ion-col>
+            <ion-col size-xs="6" style="display: flex; align-items: center; justify-content: center;">
+              <span class="inner-span">
+                <ion-item lines="none" class="padding" style="margin-top: -12px;">
+                  <p class="font-12">$</p>
+                  <ion-input class="custom-input-pricing-Add"></ion-input>
+                  <ion-icon class="set-alert-circle" name="alert-circle-outline"></ion-icon>
+                </ion-item>
+              </span>
+            </ion-col>
+            <ion-col size-xs="6" class="padding" style="display: flex; justify-content: flex-end;">
+              <ion-textarea class="custom-input-pricing-pay" type="text" placeholder=" Payment Message"></ion-textarea>
+            </ion-col>
+            <ion-col size-xs="6" class="padding" style="padding-left: 3%;">
+              <ion-input class="custom-input-pricing-Ba" placeholder=" Balance Due Date">
+                <ion-icon class="icon-today-outline" name="today-outline" slot="end"></ion-icon>
+              </ion-input>
+              <ion-row>
+                <ion-button class="quick-btn fontWhite-12">
+                  $ Quick Price
+                </ion-button>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowMisc()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="help-outline"></ion-icon>
+            | Misc
+          </span>
+        </ion-button>
+
+        <!-- //Row Misc -->
+        <ion-row *ngIf="isRowvisibleMisc" style="padding-left: 3%;">
+          <ion-col size-xs="6">
+            <ion-label class="font-12">How did you hear of us ?</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Opsperson</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Salesperson</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Account Owner</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Priority</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-row>
+              <ion-label class="font-12">Account Owner</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-label class="font-12-label">Name Admin</ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-textarea class="custom-input-pricing-pay" type="text"
+              placeholder=" Notes (Customer see these!)"></ion-textarea>
+          </ion-col>
+          <ion-col size-xs="6" style="display: flex; align-items: end;">
+            <ion-button class="quick-btn fontWhite-12">
+              Itinerary
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowItem()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="ticket-outline"></ion-icon>
+            | Item
+          </span>
+        </ion-button>
+        <ion-row *ngIf="isRowvisibleItem">
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Location</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Category</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="Select">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col size-xs="6">
+            <ion-label class="font-12">Group</ion-label>
+            <ion-select class="custom-input" aria-label="Fruit" interface="popover" placeholder="-Group-">
+              <ion-select-option value="apples">Apples</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <!-- <ion-row> -->
+          <ion-col offset="3.7" size-xs="12">
+            <ion-item lines="none">
+              <ion-button class="quick-btn-green fontWhite-12">
+                Book Now
+              </ion-button>
+              <ion-button class="quick-btn-green fontWhite-12">
+                Send and Save
+              </ion-button>
+              <ion-button class="quick-btn-blue custom fontWhite-12">
+                Quick Save
+              </ion-button>
+            </ion-item>
+          </ion-col>
+          <!-- </ion-row> -->
+        </ion-row>
+      </ion-col>
+
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowKyc()">
+          <span class="inner-span">
+            Know Your Customer (KYC)
+          </span>
+        </ion-button>
+        <ion-row *ngIf="isRowvisibleKyc">
+          <ion-col size-xs="7" class="padding">
+            <ion-card class="card-container">
+              <ion-card-header class="header-card">
+                <ion-card-title class="font-12" style="color: #ffff;">Internal Info</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="content-card font-add">
+                Please fill the Email Address
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size-xs="5" class="padding">
+            <ion-card class="card-container">
+              <ion-card-header class="header-card-y">
+                <ion-card-title class="font-12" style="color: #ffff;">Internal Info</ion-card-title>
+              </ion-card-header>
+              <ion-card-content class="content-card-y font-add padding" style="font-size: 9px;">
+                Please fill the Email Address
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size-xs="12" class="delete-spaces">
+        <ion-button class="custom-btn-drop" (click)="toggleRowStart()">
+          <span class="inner-span">
+            <ion-icon slot="start" name="map-outline"></ion-icon>
+            | Start of Journey
+          </span>
+        </ion-button>
+        <ion-row *ngIf="isRowvisibleStart" style="padding-top: 3%;">
+          <ion-row class="padding">
+            <ion-card class="padding card-container-h">
+              <ion-checkbox class="check-box" checked="true">Start of Journey</ion-checkbox>
+            </ion-card>
+            <ion-row style="padding: 3%; padding-right: 0;">
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-red">Pickup Date</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-input class="input-start"></ion-input>
+                <ion-icon class="ion-icon" name="today-outline"></ion-icon>
+                <ion-icon class="ion-icon" name="time-outline"></ion-icon>
+              </ion-col>
+
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-red">Collection Address(1)</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-input class="input-start"></ion-input>
+                <ion-icon class="ion-icon" name="location-outline"></ion-icon>
+                <ion-button class="bnt-note">
+                  <ion-icon style="font-size: 18px" name="document-text-outline"></ion-icon>
+                  Note
+                </ion-button>
+              </ion-col>
+
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-12">Destination Note</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-textarea class="textarea-start"></ion-textarea>
+                <ion-icon class="ion-icon" style="color: #ffff;" name="location-outline"></ion-icon>
+                <ion-button class="bnt-note">
+                  <ion-icon style="font-size: 18px" name="close-outline"></ion-icon>
+                  Note
+                </ion-button>
+              </ion-col>
+
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-red">Collection Address(1)</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-input class="input-start"></ion-input>
+                <ion-icon class="ion-icon" name="location-outline"></ion-icon>
+                <ion-button class="bnt-note">
+                  <ion-icon style="font-size: 18px" name="document-text-outline"></ion-icon>
+                  Note
+                </ion-button>
+              </ion-col>
+
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-12">Destination Note</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-textarea class="textarea-start"></ion-textarea>
+                <ion-icon class="ion-icon" style="color: #ffff;" name="location-outline"></ion-icon>
+                <ion-button class="bnt-note">
+                  <ion-icon style="font-size: 18px" name="close-outline"></ion-icon>
+                  Note
+                </ion-button>
+              </ion-col>
+
+              <ion-col size-xs="4.5" class="center-left">
+                <ion-label class="font-12">Destination Arrival Time</ion-label>
+              </ion-col>
+              <ion-col size-xs="7.5" class="center-left">
+                <ion-input class="input-start"></ion-input>
+                <ion-icon class="ion-icon" name="today-outline"></ion-icon>
+                <ion-icon class="ion-icon" name="time-outline"></ion-icon>
+              </ion-col>
+            </ion-row>
+
+            <ion-card class="padding card-container-h">
+              <ion-label class="margin-nav">Vehicle</ion-label>
+            </ion-card>
+
+            <ion-row style="padding: 3%;">
+              <ion-col size-xs="3" class="center-left">
+                <ion-label class="font-red">Passenger</ion-label>
+              </ion-col>
+              <ion-col size-xs="9" class="center-left">
+                <ion-select class="custom-btn-dot-start" aria-label="Fruit" interface="popover"
+                  placeholder="Select Pax">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-xs="3" class="center-left">
+                <ion-label class="font-red">Vehicle</ion-label>
+              </ion-col>
+              <ion-col size-xs="9" class="center-left">
+                <ion-select class="custom-btn-dot-start" aria-label="Fruit" interface="popover"
+                  placeholder="Select Vehicle">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-xs="3" class="center-left">
+                <ion-label class="font-red">Luggaga</ion-label>
+              </ion-col>
+              <ion-col size-xs="9" class="center-left">
+                <ion-select class="custom-btn-dot-start" aria-label="Fruit" interface="popover"
+                  placeholder="Select Luggage">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                </ion-select>
+              </ion-col>
+
+              <ion-col size-xs="3" class="center-left">
+                <ion-label class="font-12">Journey Type</ion-label>
+              </ion-col>
+              <ion-col size-xs="9" class="center-left">
+                <ion-select class="custom-btn-dot-start" aria-label="Fruit" interface="popover"
+                  placeholder="Select Journey Type">
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                  <ion-select-option value="apples">Apples</ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+
+            <ion-card class="padding card-container-h">
+              <ion-label class="margin-nav">Filght details</ion-label>
+            </ion-card>
+            <ion-card class="card-filght">
+              <ion-segment value="Arrival" style="border-radius: 2px;">
+                <ion-segment-button value="Arrival">
+                  <ion-label>Arrival</ion-label>
+                </ion-segment-button>
+                <ion-segment-button value="Departrue">
+                  <ion-label>Departrue</ion-label>
+                </ion-segment-button>
+              </ion-segment>
+              <ion-card-content class="padding">
+                <ion-row>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Filght Airline"></ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Number">
+                      <ion-icon slot="end" name="search-outline"></ion-icon>
+                    </ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Date">
+                      <ion-icon slot="end" name="calendar-outline"></ion-icon>
+                    </ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Filght Airline"></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Filght Airline"></ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6">
+                    <ion-input class="input-seg" placeholder="Filght Airline"></ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-row>
+          <ion-row>
+            <ion-col size-xs="12" class="center" style="display: flex;">
+              <ion-button class="btn font-10">Add Movement</ion-button>
+              <ion-button class="btn font-10">Add Blank Journey</ion-button>
+              <ion-button class="btn font-10">Add Return</ion-button>
+              <ion-button class="btn font-10">Remove Movement</ion-button>
+            </ion-col>
+            <ion-col size-xs="12" class="center padding" style="display: flex;">
+              <ion-button class="btn-gray font-10">Duplicate Movement</ion-button>
+              <ion-button class="btn-gray font-10">Duplicate Journey</ion-button>
+              <ion-button class="btn-gray font-10">Assign Driver</ion-button>
+              <ion-button class="btn-gray font-10">Covering job</ion-button>
+            </ion-col>
+            <ion-col size-xs="12" class="padding center-left" style="display: flex;">
+              <ion-button class="btn-gray font-10">Remove Driver</ion-button>
+            </ion-col>
+            <ion-col size-xs="12" class="center-right">
+              <ion-icon class="ion-icon-map" name="map"></ion-icon>
+            </ion-col>
+            <ion-col size-xs="12">
+
+            </ion-col>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

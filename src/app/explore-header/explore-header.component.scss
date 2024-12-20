@@ -1,0 +1,23 @@
+ion-img {
+    
+    width: 150px;
+    height: 100px;
+}
+
+ion-searchbar.custom {
+    font-size: 5px !important;
+    --background: #FFFF;
+    --border-radius: 10px;
+
+    --box-shadow: 0 0 0 1px #469FD1;
+    --icon-color: #469FD1;
+    --color: #469FD1;
+
+}
+
+searchbar-input{
+    --height: 200px;
+    height: 200px;
+}
+
+
