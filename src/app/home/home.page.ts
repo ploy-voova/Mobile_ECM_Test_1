@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Platform } from '@ionic/angular';
+import Swiper from 'swiper';
 
 interface q {
   quote_id: string;
@@ -21,9 +23,11 @@ interface q {
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  currentWidth: number = 0;
+  currentHeight: number = 0;
   quo: q[] = [];
   
-  constructor() {}
+  constructor(private platform: Platform) {}
 
   ngOnInit() {
     const quote = [
@@ -96,7 +100,29 @@ export class HomePage implements OnInit {
     this.quo = (quote);
     console.log(this.quo);
 
+    this.currentWidth = window.innerWidth;
+    this.currentHeight = window.innerHeight;
+
+    window.addEventListener('resize', this.onResize);
+
   }
+
+  onResize = () => {
+    this.currentWidth = window.innerWidth;
+    this.currentHeight = window.innerHeight;
+    console.log(`Width: ${this.currentWidth}, Height: ${this.currentHeight}`);
+  };
+
+  ngOnDestroy() {
+    // ลบ event listener เมื่อคอมโพเนนต์ถูกทำลาย
+    window.removeEventListener('resize', this.onResize);
+  }
+  
+  swiper = new Swiper('.swiper', {
+    autoplay: {
+      delay: 5000,
+    },
+   });
 
 
 

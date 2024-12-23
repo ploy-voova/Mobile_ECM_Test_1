@@ -1,3 +1,7 @@
+ion-grid{
+    padding-top: 35%; 
+    z-index: 2;
+}
 .img {
     width: 183px;
     height: 122px;
@@ -58,7 +62,7 @@
     width: 200%;
     height: 650px;
     background: white;
-    border-radius: 100%;
+    border-radius: 50%;
     margin-bottom: 25px;
     bottom: 50px;
     left: -50%;
@@ -68,4 +72,84 @@
 ion-content {
     --overflow: hidden
 }
+
+// @media (max-width: 768px) {
+//     .curved-shape {
+//         height: 30vh; /* Increase height for smaller screens */
+//     }
+//     .curved-shape::before {
+//         height: 80vh; /* Adjust the curve size */
+//         bottom: -15vh; /* Adjust bottom positioning */
+//     }
+// }
+
+// @media (max-width: 480px) {
+//     .curved-shape {
+//         height: 40vh; /* Further adjust height for very small screens */
+//     }
+//     .curved-shape::before {
+//         height: 100vh; /* Scale the curve to fit smaller screens */
+//         bottom: -20vh; /* Adjust bottom positioning */
+//     }
+// }
+
+// @media (min-width: 500px){
+//     ion-grid{
+//         padding-top: 20%; 
+//         z-index: 2;
+//     }
+
+//     .curved-shape {
+//         height: 320px;
+//     }
+// }
+
+// @media (min-width: 650px){
+//     ion-grid{
+//         padding-top: 20%; 
+//         z-index: 2;
+//     }
+
+//     .curved-shape {
+//         // height: 320px;
+//     }
+// }
+
+// @media (min-width: 700px){
+//     ion-grid{
+//         padding-top: 20%; 
+//         z-index: 2;
+//     }
+
+//     .curved-shape {
+//         height: 320px;
+//     }
+// }
+
+// @media (min-width: 800px){
+//     ion-grid{
+//         padding-top: 20%; 
+//         z-index: 2;
+//     }
+
+//     .curved-shape {
+//         margin-top: -120px;
+//     }
+// }
+
+// @media (min-width: 900px){
+//     ion-grid{
+//         padding-top: 15%; 
+//         z-index: 2;
+//     }
+
+//     .curved-shape {
+//         // margin-top: -150px;
+//         // height: 320px;
+//     }
+
+//     .curved-shape::before {
+//         height: 580px;
+//     }
+// }
 

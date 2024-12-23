@@ -26,7 +26,7 @@
 }
 
 ion-toolbar {
-    --background: transparent;
+    --background: #ffff;
     --border-width: 0;
     --border-bottom: none;
     border-bottom: none;
@@ -124,7 +124,7 @@ h5 {
 }
 
 .card-container {
-    width: 360px;
+    width: 100%;
     padding: 0;
     height: 169px;
     /* UI Properties */
@@ -266,21 +266,26 @@ ion-row h1 {
     opacity: 1;
 }
 
-// ion-content {--overflow: hidden}
-
-// ion-content {
-//     --overflow: hidden; /* ซ่อนการเลื่อน */
-//   }
-
-// ion-content::-webkit-scrollbar {
-//     display: none; /* ซ่อน scrollbar สำหรับ Webkit-based browsers */
-//   }
-
 .text-truncate {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.call-h1{
+    padding: 3%;
+}
+
+// .ios ion-title {
+//     color: black;
+// }
+.md {
+    .card-call {
+        width: 600px;
+        margin-top: 5%;
+    }
+}
+
 
 @media (min-width: 1024px) {
     ion-toolbar {
@@ -294,7 +299,7 @@ ion-row h1 {
 
 @media (min-width: 576px) {
     .card-call {
-        width: 700px;
+        width: 600px;
     }
 
     .card-container {
@@ -305,18 +310,40 @@ ion-row h1 {
 
 }
 
-@media (min-width: 768px) {
+@media (min-width: 700px) {
     .card-call {
-        width: 700px;
+        width: 600px;
+        // margin-top: 3%;
     }
 
     .card-container {
         width: 600px;
-        // height: 200px;
+    }
+
+    .call-h1{
+        padding-left: 10.2%;
+        // margin-left: 25%;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-call {
+        width: 300px;
+    }
+
+    .card-container {
+        width: 600px;
+    }
+
+    .call-h1{
+        padding-left: 10.2%;
+        // margin-left: 25%;
     }
 
 
 }
+
+
 
 
 //   @media (min-height: 600px) {
