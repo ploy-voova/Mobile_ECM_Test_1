@@ -75,7 +75,7 @@ swiper-slide {
 
 .cardQ {
     width: 160px;
-    height: 45px;
+    height: auto;
     padding: 0;
     // --background: #469FD1;
     background-color: #469FD1;
@@ -307,6 +307,20 @@ ion-button {
     --background-activated: transparent;
     --background-hover: transparent;
     --ripple-color: transparent;
+}
+
+.custom-col {
+    flex: 0 0 40%; /* 50% width (6 columns) */
+}
+// .custom-col2 {
+//     flex: 0 0 45%; /* 50% width (6 columns) */
+//     max-width: 55%; /* กำหนดขนาดสูงสุด */
+// }
+
+@media (min-width: 300px) and (max-width:429px) {
+    .custom-col {
+        flex: 0 0 40%; /* 50% width (6 columns) */
+    }
 }
 
 // @media (max-width: 400px) {

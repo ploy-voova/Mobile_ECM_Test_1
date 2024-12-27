@@ -42,6 +42,7 @@ ion-grid {
     height: auto;
     padding: 0;
     margin: 0;
+    margin-bottom: 5%;
     background: rgba(172, 172, 172, 0.15);
     /* ใช้ค่า opacity แบบนี้ */
     border-radius: 10px;
@@ -53,9 +54,11 @@ ion-grid {
 }
 
 .card-content {
-    margin: 0;
-    padding-top: 3%;
-    padding-left: 2%;
+    padding: 1.5%;
+    // margin: 0;
+    // padding-top: 3%;
+    // padding-left: 2%;
+    // margin-bottom: 100%;
 }
 
 .input {
@@ -81,6 +84,11 @@ ion-grid {
     color: #469FD1;
 }
 
+.icon-blue {
+    font-size: 25px;
+    color: #469FD1;
+}
+
 .font-icon {
     font: var(--unnamed-font-style-normal) normal normal 25px/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
     letter-spacing: var(--unnamed-character-spacing-0);
@@ -103,8 +111,8 @@ ion-checkbox::part(container) {
 }
 
 .card {
-    width: 364px;
-    height: 176px;
+    width: auto;
+    height: auto;
     margin: 2%;
     background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px var(--unnamed-color-469fd1);
@@ -127,13 +135,9 @@ ion-checkbox::part(container) {
 .icon-line {
     position: relative;
     width: 0.2px;
-    /* Adjust thickness */
-    height: 60px;
-    /* Adjust height */
-    // top: 10px;
+    height: 90px;
     bottom: -15px;
     background-color: #397C53;
-    /* Adjust color */
     margin: 0 auto;
 
     &::before {
@@ -159,3 +163,101 @@ ion-checkbox::part(container) {
         border-top: 6px solid #397C53;
     }
 }
+
+ion-select {
+    width: 238px;
+    height: 40px;
+    min-height: 40px;
+    color: #000000;
+    background: #ACACAC 0% 0% no-repeat padding-box;
+    border-radius: 3px;
+    opacity: 0.45;
+
+}
+
+.ion-input {
+    width: 219px;
+    height: 40px;
+    min-height: 40px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-color: #707070;
+    border-radius: 2px;
+    // opacity: 1;
+}
+
+.custom-col {
+    flex: 0 0 38%;
+    /* 50% width (6 columns) */
+    max-width: 50%;
+    /* กำหนดขนาดสูงสุด */
+}
+
+.custom-col2 {
+    flex: 0 0 45%;
+    /* 50% width (6 columns) */
+    max-width: 55%;
+    /* กำหนดขนาดสูงสุด */
+}
+
+.margin {
+    margin-bottom: 3%;
+}
+
+.input-no-back {
+    width: 214px;
+    height: 40px;
+    /* UI Properties */
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+@media (min-width: 300px) and (max-width:400px) {
+
+    .card {
+        width: auto;
+    }
+
+    .custom-col2 {
+        flex: 0 0 60%;
+    }
+
+    .card-content {
+        padding: 2%;
+    }
+}
+
+// @media (min-width: 500px) {
+//     .custom-col {
+//         flex: 0 0 30%; /* 50% width (6 columns) */
+//         // max-width: 50%; /* กำหนดขนาดสูงสุด */
+//     }
+// }
+
+// @media (min-width: 768px) {
+//     .custom-col {
+//         width: 33.33%;
+//         /* md */
+//     }
+// }
+
+// @media (min-width: 992px) {
+//     .custom-col {
+//         width: 25%;
+//         /* lg */
+//     }
+// }
+
+// @media (min-width: 1200px) {
+//     .custom-col {
+//         width: 16.67%;
+//         /* xl */
+//     }
+// }
