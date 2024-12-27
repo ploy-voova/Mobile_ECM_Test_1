@@ -13,6 +13,23 @@ ion-grid {
     padding: 4%;
 }
 
+ion-content{
+    --background: #ffff;
+}
+
+ion-toolbar {
+    --background: #ffff;
+    border: none;
+    box-shadow: none ;
+    // --border-width: 0;
+    // padding: 0;
+    // --border-bottom: none;
+    // border-bottom: none;
+    // box-shadow: none;
+
+}
+
+
 .custom-btn {
     width: 180px;
     height: 31px;

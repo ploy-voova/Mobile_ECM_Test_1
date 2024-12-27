@@ -23,5 +23,9 @@ export class TabsPage {
     this.menu.open('first-menu');
   }
 
+  To_home(){
+    this.router.navigateByUrl('/tabs/home');
+  }
+
 
 }

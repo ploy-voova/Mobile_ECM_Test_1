@@ -27,10 +27,13 @@
 
 ion-toolbar {
     --background: #ffff;
-    --border-width: 0;
-    --border-bottom: none;
-    border-bottom: none;
-    box-shadow: none;
+    border: none;
+    box-shadow: none ;
+    // --border-width: 0;
+    // padding: 0;
+    // --border-bottom: none;
+    // border-bottom: none;
+    // box-shadow: none;
 
 }
 
@@ -38,6 +41,10 @@ ion-header {
     --background: #ffff;
     box-shadow: none;
     border-bottom: #fff;
+}
+
+ion-content{
+    --background: #ffff;
 }
 
 .content-card {
@@ -70,17 +77,16 @@ swiper-slide {
     width: 160px;
     height: 45px;
     padding: 0;
-    background: #469FD1 0% 0% no-repeat padding-box;
+    // --background: #469FD1;
+    background-color: #469FD1;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 2px;
-
+    opacity: 1 !important;
 }
 
 .ion-card-title {
     text-align: left;
-    font-size: 18px;
-    line-height: 22px;
-    font-family: Roboto, sans-serif;
+    font: normal normal 900 18px/22px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
 
@@ -94,7 +100,7 @@ swiper-slide {
     // font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;
+
 }
 
 .label {
@@ -105,14 +111,14 @@ swiper-slide {
     // font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;
+
 }
 
 h5 {
     text-align: left;
     font: normal normal normal 14px/19px Roboto;
     letter-spacing: 0px;
-    opacity: 1;
+
 }
 
 .cardQ h3 {
@@ -120,7 +126,7 @@ h5 {
     font: normal normal normal 10px/13px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;
+
 }
 
 .card-container {
@@ -133,6 +139,7 @@ h5 {
     border: 1px solid #707070;
     border-radius: 2px;
     opacity: 0.82;
+    opacity: 1 !important;
 }
 
 .grid {
@@ -157,7 +164,7 @@ h5 {
     font: normal normal normal 14px/19px Roboto;
     letter-spacing: 0px;
     color: #1e2025;
-    opacity: 1;
+
 }
 
 ion-row h1 {
@@ -165,27 +172,37 @@ ion-row h1 {
     font: normal normal bold 18px/24px Roboto;
     letter-spacing: 0px;
     color: #747474;
-    opacity: 1;
+
 }
 
 .card-call {
-    width: 370px;
+    width: 100%;
     height: 80px;
+    --background: #ffff;
     border: 1px solid #469FD1;
+    box-shadow: none;
     border-radius: 7px;
-    opacity: 1;
+    opacity: 1 !important;
+
+    &.ios {
+        margin-bottom: -2%;
+    }
+
+    &.md {
+        margin-bottom: 1%;
+    }
 }
 
 .call {
     font-size: 40px;
     color: #469FD1;
-    opacity: 1;
+
 }
 
 .call_2 {
     font-size: 40px;
     color: #ffff;
-    opacity: 1;
+    
 }
 
 .set-font {
@@ -193,7 +210,7 @@ ion-row h1 {
     font: normal normal bold 18px/24px Roboto;
     letter-spacing: 0px;
     color: #52595C;
-    opacity: 1;
+
 }
 
 .set-font-h1 {
@@ -201,24 +218,22 @@ ion-row h1 {
     font: normal normal bold 18px/24px Roboto;
     letter-spacing: 0px;
     color: #ffff;
-    opacity: 1;
+
 }
 
 .set-font2 {
     text-align: left;
-    font: normal normal bold 14px/18px Roboto;
+    font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
     color: #52595C;
-    opacity: 1;
-    // padding: ;
+
 }
 
 .set-font2-h2 {
     text-align: left;
-    font: normal normal bold 14px/18px Roboto;
+    font: normal normal normal 14px/17px Roboto;
     letter-spacing: 0px;
-    color: #ffff;
-    opacity: 1;
+    color: #FFFFFF;
     // padding: ;
 }
 
@@ -255,15 +270,12 @@ ion-row h1 {
     /* UI Properties */
     --background: #469FD1 0% 0% no-repeat padding-box;
     --border-radius: 3px;
-    opacity: 1;
 
     text-align: left;
-    font-size: 16px;
-    line-height: 19px;
-    font-family: Roboto, sans-serif;
+    font: normal normal bold 16px/19px Roboto;
     letter-spacing: 0px;
     color: #FFFFFF;
-    opacity: 1;
+
 }
 
 .text-truncate {
@@ -272,76 +284,137 @@ ion-row h1 {
     text-overflow: ellipsis;
 }
 
-.call-h1{
+.call-h1 {
     padding: 3%;
 }
 
+.label-com {
+    text-align: left;
+    font: normal normal bold 18px/22px Roboto;
+    letter-spacing: 0px;
+    color: #747474;
+}
+
+:root {
+    --ion-font-family: 'Roboto', sans-serif;
+}
+
+.ios {
+    --ion-font-family: 'San Francisco', sans-serif;
+}
+
+ion-button {
+    --background-activated: transparent;
+    --background-hover: transparent;
+    --ripple-color: transparent;
+}
+
+// @media (max-width: 400px) {
+//     .col-f{
+//         width: 80% !important;
+//     }
+//     .col-l{
+//         width: 20% !important;
+//     }
+// }
 // .ios ion-title {
 //     color: black;
 // }
-.md {
-    .card-call {
-        width: 600px;
-        margin-top: 5%;
-    }
-}
+// .md {
+//     .card-call {
+//         // width: 600px;
+//         margin-top: 5%;
+//     }
+// }
 
 
-@media (min-width: 1024px) {
-    ion-toolbar {
-        --background: transparent;
-        --border-width: 0;
-        --border-bottom: none;
-        border-bottom: none;
-        box-shadow: none;
-    }
-}
-
-@media (min-width: 576px) {
-    .card-call {
-        width: 600px;
-    }
-
-    .card-container {
-        width: 600px;
-        // height: 200px;
-    }
+// @media (min-width: 1024px) {
+//     ion-toolbar {
+//         --background: transparent;
+//         --border-width: 0;
+//         --border-bottom: none;
+//         border-bottom: none;
+//         box-shadow: none;
+//     }
+// }
 
 
-}
-
-@media (min-width: 700px) {
-    .card-call {
-        width: 600px;
-        // margin-top: 3%;
-    }
-
-    .card-container {
-        width: 600px;
-    }
-
-    .call-h1{
-        padding-left: 10.2%;
-        // margin-left: 25%;
-    }
-}
-
-@media (max-width: 400px) {
-    .card-call {
-        width: 300px;
-    }
-
-    .card-container {
-        width: 600px;
-    }
-
-    .call-h1{
-        padding-left: 10.2%;
-        // margin-left: 25%;
-    }
 
 
-}
+// }
+
+// @media (min-width: 700px) {
+//     .card-call {
+//         width: 600px;
+//         // margin-top: 3%;
+//     }
+
+//     .card-container {
+//         width: 600px;
+//     }
+
+//     .call-h1{
+//         padding-left: 10.2%;
+//         // margin-left: 25%;
+//     }
+// }
+
+
+////////////////////////////////////////////////////////////////////////////////
+// @media (max-width: 400px) {
+//     .md .card-call {
+//         width: 300px;
+//         margin-top: 25px;
+//     }
+
+//     .md.call-h1 {
+//         padding-left: 10.2%;
+//         // margin-left: 25%;
+//     }
+
+
+//     .ios {
+//         .card-call {
+//             width: 340px;
+//             margin-top: 25px;
+//         }
+
+//         .card-container {
+//             width: 600px;
+//         }
+
+//         .call-h1 {
+//             padding-left: 10.2%;
+//             // margin-left: 25%;
+//         }
+//     }
+// }
+
+// @media (max-width: 500px) {
+//     .md .card-call {
+//         width: 350px;
+//         margin-top: 25px;
+//     }
+
+//     .md.call-h1 {
+//         padding-left: 10.2%;
+//     }
+
+//     .ios {
+//         .card-call {
+//             width: 340px;
+//             margin-top: 25px;
+//         }
+
+//         .card-container {
+//             width: 600px;
+//         }
+
+//         .call-h1 {
+//             padding-left: 10.2%;
+//         }
+//     }
+// }
 
 
 

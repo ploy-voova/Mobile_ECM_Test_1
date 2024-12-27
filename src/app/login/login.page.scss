@@ -70,7 +70,12 @@ ion-grid{
 }
 
 ion-content {
-    --overflow: hidden
+    --overflow: hidden;
+    --background: #ffff;
+}
+
+ion-item{
+    --background: #ffff;
 }
 
 // @media (max-width: 768px) {

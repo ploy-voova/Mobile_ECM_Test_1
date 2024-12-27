@@ -8,7 +8,7 @@
     <ion-row>
       <ion-col  style=" z-index: 2; padding-top: 8%; padding-left: 6%; padding-right: 8%;">
         <ion-item>
-          <ion-input class="font-16" placeholder="Username">
+          <ion-input [(ngModel)]="username" class="font-16" placeholder="Username">
             <ion-icon slot="end" name="person"></ion-icon>
           </ion-input>
         </ion-item>
@@ -17,7 +17,7 @@
     <ion-row>
       <ion-col style=" z-index: 2; padding-top: 5%; padding-left: 6%; padding-right: 8%;">
         <ion-item>
-          <ion-input class="font-16" placeholder="Password">
+          <ion-input [(ngModel)]="password" class="font-16" placeholder="Password">
             <ion-icon slot="end" name="lock-closed"></ion-icon>
           </ion-input>
         </ion-item>
@@ -57,5 +57,4 @@
     </ion-row>
   </ion-grid>
 
-  <ion-row class="curved-shape"></ion-row>
 </ion-content>

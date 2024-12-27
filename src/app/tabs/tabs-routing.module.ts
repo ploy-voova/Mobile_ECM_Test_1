@@ -39,11 +39,15 @@ const routes: Routes = [
         path: 'inbox',
         loadChildren: () => import('../inbox/inbox.module').then( m => m.InboxPageModule)
       },
+      {
+        path: 'quote-preview/:quoteId',
+        loadChildren: () => import('../quote-preview/quote-preview.module').then( m => m.QuotePreviewPageModule)
+      },
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/quote-preview',
     pathMatch: 'full'
   }
 ];
