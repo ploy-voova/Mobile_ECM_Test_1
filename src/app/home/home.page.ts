@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/co
 import { Router } from '@angular/router';
 import { Platform } from '@ionic/angular';
 import Swiper from 'swiper';
+import { baseUrl } from 'BaseUrl';
 
 interface q {
   quote_id: string;
@@ -63,7 +64,7 @@ export class HomePage implements OnInit {
     quotebook(){
     
 
-    fetch('http://35.187.248.255:214/api/ploy/quote_booking', {
+    fetch(baseUrl+'/api/ploy/quote_booking', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

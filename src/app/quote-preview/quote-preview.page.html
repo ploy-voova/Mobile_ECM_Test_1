@@ -13,10 +13,10 @@
     </ion-row>
     <ion-row>
       <ion-label class="font-16" style="color: #313848;">Date:</ion-label>
-      <ion-label class="font-16" style="color: #747474;"> 19 Dec 2024 20:20</ion-label>
+      <ion-label class="font-16" style="color: #313848;">{{date_j}} {{time_j}} </ion-label>
     </ion-row>
     <!-- <ion-row class="no-padding"> -->
-    <ion-card class="card-background" *ngFor="let jj of key; let i = index">
+    <ion-card class="card-background" *ngFor="let jj of dt_q; let i = index">
 
       <ion-card-content class="card-content">
         <ion-row>
@@ -28,7 +28,7 @@
               <ion-checkbox class="font-16" style="color: #747474;" labelPlacement="end">Check All</ion-checkbox>
             </ion-row>
           </ion-col>
-          <ion-col >
+          <ion-col>
             <ion-row style="display: flex; align-items: center; justify-content: end;">
               <ion-label class="font-icon" style="margin-right: 5%;">$</ion-label>
               <ion-input class="input" style="margin-right: 5%;"></ion-input>
@@ -37,7 +37,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-card class="card" *ngFor="let mm of jj[1]; let j = index">
+        <ion-card class="card" *ngFor="let mm of jj['movement_quote']; let j = index">
           <ion-card-content style="padding: 2%;">
             <ion-row>
               <ion-col class="custom-col2">
@@ -84,17 +84,7 @@
             </ion-row>
 
             <!-- *ngIf="isdrop[i] && isdrop[i][j]" -->
-            <ion-row>
-              <ion-col>
-                <ion-label class="font-14" style="color: #FF0000;">Depot</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-select class="font-14" aria-label="Fruit" interface="popover" placeholder="Select Depot">
-                  <ion-select-option value="apples">Apples</ion-select-option>
-                  <ion-select-option value="oranges">Oranges</ion-select-option>
-                  <ion-select-option value="bananas">Bananas</ion-select-option>
-                </ion-select>
-              </ion-col>
+            <ion-row *ngIf="isdrop[i] && isdrop[i][j]">
               <ion-col size="12">
                 <ion-checkbox class="font-14" labelPlacement="start" style="color: #747474; font-weight: bold;">
                   Start ofJourney
@@ -104,38 +94,125 @@
                 <ion-label class="font-14" style="color: #FF0000;">Pickup date</ion-label>
               </ion-col>
               <ion-col size="8">
-                <ion-input class="font-14 ion-input" style="color: #707070;" value="{{ mm.date_start}} {{mm.time_start}}">
-                  <ion-icon slot="end" name="today-outline" class="icon-blue"></ion-icon>
-                  <ion-icon slot="end" name="time-outline" class="icon-blue"></ion-icon>
+                <ion-input class="font-14 ion-input" style="color: #707070; "
+                  value="  {{date_c ? date_c : mm.date_start}} {{time_c ? time_c : mm.time_start}}">
+                  <ion-icon id="open-datetime[{{i}}][{{j}}]" style="margin-right: 3%; padding: 0;" slot="end"
+                    name="today-outline" class="icon-blue"></ion-icon>
+                  <ion-icon style="margin-right: 5%;" slot="end" name="time-outline" class="icon-blue"></ion-icon>
                 </ion-input>
               </ion-col>
-            </ion-row>
-            <ion-row style="margin-top: 3%; margin-bottom: 3%;">
-              <ion-label class="font-14" style="color: #FF0000;">Collection Address(2)</ion-label>
-            </ion-row>
-            <ion-row class="margin">
-              <ion-input class="center font-14 ion-input" style="color: #000000; border: none; background: #D9D9D9 0% 0% no-repeat padding-box;"  value="Better Swiss Cottage Leisure" disabled></ion-input>
-              <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-              <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
-            </ion-row>
-            <ion-row class="margin">
-              <ion-label class="font-14" style="color: #FF0000;">Destination Address(2)</ion-label>
-            </ion-row>
-            <ion-row class="margin">
-              <ion-input class="center font-14 input-no-back"></ion-input>
-              <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
-              <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
-            </ion-row>
-            <ion-row>
-              <ion-label class="font-16" style="color: #707070; font-weight: bold;">Vehicle</ion-label>
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-label class="font-14" style="color: #FF0000;">Passenger</ion-label>
-              </ion-col>
-              <ion-col>
-                <ion-input class="center font-14 input-no-back"></ion-input>
-              </ion-col>
+              <!-- <ion-datetime presentation="date"></ion-datetime> -->
+              <!-- Popover -->
+              <ion-popover trigger="open-datetime[{{i}}][{{j}}]" side="bottom" alignment="center">
+                <ng-template>
+                  <ion-content class="popover-content">
+                    <ion-datetime presentation="date" (ionChange)="onDateChange($event)">
+                    </ion-datetime>
+                    <!-- <ion-button expand="full" (click)="closePopover()">ตกลง</ion-button> -->
+                  </ion-content>
+                </ng-template>
+              </ion-popover>
+              <ion-row style="margin-top: 3%; margin-bottom: 3%;">
+                <ion-label class="font-14" style="color: #FF0000;">Collection Address(2)</ion-label>
+              </ion-row>
+              <ion-row class="margin">
+                <ion-input class="center font-14 ion-input"
+                  style="color: #000000; border: none; background: #D9D9D9 0% 0% no-repeat padding-box;"
+                  value="{{mm.address_last}}" disabled="true"></ion-input>
+                <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
+                <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
+              </ion-row>
+              <ion-row class="margin">
+                <ion-label class="font-14" style="color: #FF0000;">Destination Address(2)</ion-label>
+              </ion-row>
+              <ion-row class="margin">
+                <ion-input class="center font-14 ion-input"></ion-input>
+                <ion-icon class="icon-blue" name="location-outline" style="font-size: 35px;"></ion-icon>
+                <ion-icon class="icon-blue" name="document-text-outline" style="font-size: 35px;"></ion-icon>
+              </ion-row>
+              <ion-row>
+                <ion-label class="font-16" style="color: #707070; font-weight: bold;">Vehicle</ion-label>
+              </ion-row>
+              <ion-row>
+                <ion-col size class="center">
+                  <ion-label class="font-14" style="color: #FF0000;">Passenger</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-input class="center font-14 ion-input"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="center">
+                  <ion-label class="font-14" style="color: #FF0000;">Vehicle</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-input class="center font-14 ion-input"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="center">
+                  <ion-label class="font-14" style="color: #FF0000;">Luggage</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-input class="center font-14 ion-input"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="center">
+                  <ion-label class="font-14">Journey Type</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-input class="center font-14 ion-input"></ion-input>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-card class="card-tool">
+                  <ion-label>Filght Detaild</ion-label>
+                </ion-card>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-segment (ionChange)="segmentChanged($event)" value="light">
+                    <ion-segment-button value="light" content-id="arrival">
+                      <ion-label>Arrival</ion-label>
+                    </ion-segment-button>
+                    <ion-segment-button value="segment">
+                      <ion-label>Departure</ion-label>
+                    </ion-segment-button>
+                  </ion-segment>
+                  <ion-segment-view>
+                    <ion-segment-content id="arrival" style="padding: 5%;">
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <ion-input class="input-segment" placeholder=" Filght Airline"></ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder=" Number"></ion-input>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <ion-input class="input-segment" placeholder=" Date"></ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder=" Time"></ion-input>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col class="no-padding">
+                          <ion-input class="input-segment" placeholder=" Airport"></ion-input>
+                        </ion-col>
+                        <ion-col class="no-padding" style="display: flex; align-items: center; justify-content: end;">
+                          <ion-input class="input-segment" placeholder=" Terminal"></ion-input>
+                        </ion-col>
+                      </ion-row>
+                    </ion-segment-content>
+                  </ion-segment-view>
+                </ion-col>
+              </ion-row>
+              <ion-row style="display: flex; align-items: center; justify-content: end;">
+                <ion-icon class="icon" name="trash-outline"></ion-icon>
+              </ion-row>
             </ion-row>
 
           </ion-card-content>
