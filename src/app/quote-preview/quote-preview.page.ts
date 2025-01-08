@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PopoverController } from '@ionic/angular';
 import { baseUrl } from 'BaseUrl';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-quote-preview',
@@ -19,11 +20,16 @@ export class QuotePreviewPage implements OnInit {
 
   date_c: any;
   time_c: any;
+  time: any;
+  dt_q: any;
 
-  dt_q : any;
+  isdropCus : boolean = false;
+  isdropTran : boolean = false;
+  isdropPrice : boolean = false;
+  isdropMisc : boolean = false;
 
 
-  constructor(private router: ActivatedRoute, private popoverController: PopoverController) {
+  constructor(private router: ActivatedRoute, private popoverController: PopoverController, private alertController: AlertController) {
 
   }
 
@@ -37,16 +43,49 @@ export class QuotePreviewPage implements OnInit {
 
   }
 
-  isdrop: boolean[][] = [];
-
-  toggleDrop(journeyIndex: number, mmIndex: number) {
-    if (!this.isdrop[journeyIndex]) {
-      this.isdrop[journeyIndex] = [];  // สร้าง array สำหรับ journey นั้นถ้ายังไม่มี
-    }
-    this.isdrop[journeyIndex][mmIndex] = !this.isdrop[journeyIndex][mmIndex];
+  toggleCus(){
+    this.isdropCus = !this.isdropCus;
   }
 
-  journey_quote(){
+  isdrop: boolean[][] = [];
+  currentOpen: { journeyIndex: number; mmIndex: number } | null = null; // เก็บตำแหน่งของอันที่เปิดอยู่
+
+  async toggleDrop(journeyIndex: number, mmIndex: number) {
+    if (this.currentOpen && (this.currentOpen.journeyIndex !== journeyIndex || this.currentOpen.mmIndex !== mmIndex)) {
+      const alert = await this.alertController.create({
+        header: 'Destination has not been set.',
+        message: 'Please drag the locate pointer to the requied destination.',
+        buttons: [
+          {
+            text: 'OK',
+            role: 'confirm',
+            handler: () => {
+              console.log('OK clicked');
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+      return; // ไม่ให้ทำการเปิดรายการใหม่
+    }
+
+    if (!this.isdrop[journeyIndex]) {
+      this.isdrop[journeyIndex] = [];
+    }
+
+    this.isdrop[journeyIndex][mmIndex] = !this.isdrop[journeyIndex][mmIndex];
+
+    // อัพเดต currentOpen ตามสถานะการเปิด/ปิด
+    if (this.isdrop[journeyIndex][mmIndex]) {
+      this.currentOpen = { journeyIndex, mmIndex };
+    } else {
+      this.currentOpen = null;
+    }
+  }
+
+
+  journey_quote() {
     fetch('http://35.187.248.255:214/api/testss/quote_review/' + this.q_id, {
       method: 'GET',
       headers: {
@@ -61,47 +100,6 @@ export class QuotePreviewPage implements OnInit {
       });
   }
 
-  // journey_quote() {
-  //   console.log("quote=" + this.q_id);
-  //   fetch(baseUrl + '/api/ploy/journey_quote/' + this.q_id, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.journey = data;
-  //       // this.journeyCount = this.journey.length
-  //       this.movementsByJourney = {};
-
-  //       data.forEach((element: any) => {
-  //         fetch(baseUrl + '/api/ploy/quote_detail/' + element.j_id, {
-  //           method: 'GET',
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //         })
-  //           .then((res) => res.json())
-  //           .then((data2) => {
-  //             if (!this.movementsByJourney[element.j_id]) {
-  //               this.movementsByJourney[element.j_id] = [];
-  //             }
-  //             this.movementsByJourney[element.j_id].push(...data2);
-  //             // console.log(this.movementsByJourney);
-  //             this.key = Object.entries(this.movementsByJourney);
-  //             if (data2[0].mm_order == 1) {
-  //               this.date_j = data2[0].date_start;
-  //               this.time_j = data2[0].time_start;
-  //             }
-  //             // console.log(this.date_j);
-  //             // console.log(this.time_j);
-  //             // console.log(data2);
-
-  //           });
-  //       });
-  //     });
-  // }
   segmentChanged(event: any) {
     const selectedValue = event.detail.value;
     document.querySelectorAll('ion-segment-button').forEach((button) => {
@@ -118,10 +116,22 @@ export class QuotePreviewPage implements OnInit {
       await popover.dismiss();
     }
   }
+
   // ฟังก์ชันเรียกเมื่อเลือกวันที่
   onDateChange(event: any) {
     this.date_c = this.formatDate(event.detail.value);
     this.closePopover()
+  }
+
+  onTimeChange(event: any) {
+    this.time = event.detail.value
+    // console.log(this.time);
+  }
+
+  close() {
+    this.closePopover();
+    this.time_c = this.formatTime(this.time);
+    // console.log(this.time_c);
   }
 
   formatDate(isoString: string): string {
@@ -132,36 +142,10 @@ export class QuotePreviewPage implements OnInit {
     return `${day} ${month} ${year}`;
   }
 
-  // segmentChanged(event: any) {
-  //   console.log('Selected Value:', event.detail.value);
-  // }
-
-  // journey_quote() {
-  //   console.log("quote=" + this.q_id);
-  //   fetch('http://35.187.248.255:214/api/ploy/journey_quote/' + this.q_id, {
-  //     method: 'GET',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       this.journey = data;
-  //       data.forEach((element: any) => {
-  //         fetch('http://35.187.248.255:214/api/ploy/quote_detail/' + element.j_id, {
-  //           method: 'GET',
-  //           headers: {
-  //             'Content-Type': 'application/json',
-  //           },
-  //         })
-  //         .then((res) => res.json())
-  //         .then((data2) => {
-  //           if (!this.movement) {
-  //             this.movement = []; 
-  //           }
-  //           this.movement.push(...data2);
-  //         })
-  //       });
-  //     })
-  // }
+  formatTime(isoString: string): string {
+    const date = new Date(isoString);
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    return `${hour}:${minute}`;
+  }
 }
