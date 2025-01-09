@@ -334,6 +334,26 @@ ion-select {
     opacity: 1;
 }
 
+.ion-button-green {
+    // width: 122px;
+    height: 40px;
+    min-height: 40px;
+    background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    --background: #397C53 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    --border-radius: 3px;
+    opacity: 1;
+
+    font: var(--unnamed-font-style-normal) normal normal var(--unnamed-font-size-16)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    color: var(--unnamed-color-ffffff);
+    text-align: left;
+    font: normal normal normal 14px/16px Roboto;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    opacity: 1;
+}
+
 .ion-button-gray {
     // width: 122px;
     height: 40px;
@@ -394,6 +414,19 @@ ion-badge {
     opacity: 1;
 }
 
+.input-I {
+    width: 160px;
+    height: 40px;
+    min-width: 160px;
+    min-height: 40px;
+    background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+    border: 0.5px solid var(--unnamed-color-707070);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 0.5px solid #707070;
+    border-radius: 2px;
+    opacity: 1;
+}
+
 ion-textarea {
     width: 319px;
     height: 121px;
@@ -404,6 +437,18 @@ ion-textarea {
     border: 0.5px solid #707070;
     opacity: 1;
 }
+
+.hover-label {
+    color: #000; /* สีปกติ */
+    transition: color 0.3s ease, transform 0.3s ease; /* เพิ่มการเปลี่ยนแบบ Smooth */
+  
+    &:hover {
+      color: #ff5722; /* เปลี่ยนสีเมื่อ hover */
+      transform: scale(1.1); /* ขยายเล็กน้อยเมื่อ hover */
+    }
+  }
+
+
 
 
 .custom-col {

@@ -23,11 +23,19 @@ export class QuotePreviewPage implements OnInit {
   time: any;
   dt_q: any;
 
-  isdropCus : boolean = false;
-  isdropTran : boolean = false;
-  isdropPrice : boolean = false;
-  isdropMisc : boolean = false;
+  iconNameCus: string = 'chevron-down-outline'; // ไอคอนเริ่มต้น
+  iconNameTran: string = 'chevron-down-outline';
+  iconNamePrice: string = 'chevron-down-outline';
+  iconNameMisc: string = 'chevron-down-outline';
+  iconNameItem: string = 'chevron-down-outline';
 
+  isdropCus: boolean = false;
+  isdropTran: boolean = false;
+  isdropPrice: boolean = false;
+  isdropMisc: boolean = false;
+  isdropItem: boolean = false;
+  isdropVehicles: boolean = false;
+  isdropAs: boolean = false;
 
   constructor(private router: ActivatedRoute, private popoverController: PopoverController, private alertController: AlertController) {
 
@@ -44,7 +52,36 @@ export class QuotePreviewPage implements OnInit {
   }
 
   toggleCus(){
+    this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropCus = !this.isdropCus;
+  }
+
+  toggleTran(){
+    this.iconNameTran = this.iconNameTran === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.isdropTran = !this.isdropTran;
+  }
+
+  togglePrice(){
+    this.iconNamePrice = this.iconNamePrice === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.isdropPrice = !this.isdropPrice;
+  }
+
+  toggleMisc(){
+    this.iconNameMisc = this.iconNameMisc === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.isdropMisc = !this.isdropMisc;
+  }
+
+  toggleItem(){
+    this.iconNameItem = this.iconNameItem === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.isdropItem = !this.isdropItem;
+  }
+
+  toggleVehicles(){
+    this.isdropVehicles = !this.isdropVehicles;
+  }
+
+  toggleAs(){
+    this.isdropAs = !this.isdropAs;
   }
 
   isdrop: boolean[][] = [];
