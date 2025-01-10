@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopoverController } from '@ionic/angular';
 
 @Component({
   selector: 'app-new-job',
@@ -7,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewJobPage implements OnInit {
 
+  date_c: any;
+  time_c: any;
+  time: any;
+
+  date_des: any;
+  time_des: any;
+  time_d: any;
+
   iconNameCus: string = 'chevron-down-outline'; // ไอคอนเริ่มต้น
   iconNameTran: string = 'chevron-down-outline';
   iconNamePrice: string = 'chevron-down-outline';
   iconNameMisc: string = 'chevron-down-outline';
   iconNameItem: string = 'chevron-down-outline';
-  iconvisibleKyc: string = 'chevron-down-outline';
-  iconvisibleStart: string = 'chevron-down-outline';
+  iconNameKyc: string = 'chevron-down-outline';
+  iconNameStart: string = 'chevron-down-outline';
 
 
   isRowvisibleCus: boolean = false;
@@ -24,7 +33,7 @@ export class NewJobPage implements OnInit {
   isRowvisibleKyc: boolean = false;
   isRowvisibleStart: boolean = false;
 
-  constructor() { }
+  constructor(private popoverController: PopoverController) { }
 
   ngOnInit() {
   }
@@ -55,18 +64,81 @@ export class NewJobPage implements OnInit {
   }
 
   toggleRowMisc() {
-    this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameMisc = this.iconNameMisc === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isRowvisibleMisc = !this.isRowvisibleMisc;
   }
 
   toggleRowKyc() {
-    this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameKyc = this.iconNameKyc === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isRowvisibleKyc = !this.isRowvisibleKyc;
   }
 
   toggleRowStart() {
-    this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.iconNameStart = this.iconNameStart === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isRowvisibleStart = !this.isRowvisibleStart;
   }
-  
+
+  // ฟังก์ชันปิด Popover
+  async closePopover() {
+    const popover = await this.popoverController.getTop();
+    if (popover) {
+      await popover.dismiss();
+    }
+  }
+
+  // ฟังก์ชันเรียกเมื่อเลือกวันที่
+  onDateChange(event: any) {
+    this.date_c = this.formatDate(event.detail.value);
+    this.closePopover()
+  }
+
+  onDateChange_Des(event: any) {
+    this.date_des = this.formatDate(event.detail.value);
+    this.closePopover()
+  }
+
+  onTimeChange(event: any) {
+    this.time = event.detail.value
+    // console.log(this.time);
+  }
+
+  onTimeChange_Des(event: any) {
+    this.time_d = event.detail.value
+    // console.log(this.time);
+  }
+
+  close_des() {
+    this.closePopover();
+    this.time_c = this.formatTime(this.time);
+    // console.log(this.time_c);
+  }
+
+  close() {
+    this.closePopover();
+    this.time_des = this.formatTime(this.time_d);
+    // console.log(this.time_c);
+  }
+
+  formatDate(isoString: string): string {
+    const date = new Date(isoString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = date.toLocaleString('default', { month: 'short' });
+    const year = date.getFullYear();
+    return `${day} ${month} ${year}`;
+  }
+
+  formatTime(isoString: string): string {
+    const date = new Date(isoString);
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    return `${hour}:${minute}`;
+  }
+
+  segmentChanged(event: any) {
+    const selectedValue = event.detail.value;
+    document.querySelectorAll('ion-segment-button').forEach((button) => {
+      button.classList.toggle('selected', button.getAttribute('value') === selectedValue);
+    });
+  }
+
 }

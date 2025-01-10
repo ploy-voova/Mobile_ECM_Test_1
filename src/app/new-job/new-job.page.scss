@@ -107,6 +107,21 @@ ion-grid {
     color: #469FD1;
 }
 
+.icon-25 {
+    font-size: 25px;
+    color: #469FD1;
+}
+
+.icon-blue {
+    font-size: 30px;
+    color: #469FD1;
+}
+
+.icon-red {
+    font-size: 30px;
+    color: #FF0000;
+}
+
 ion-textarea {
     height: 90px;
     /* UI Properties */
@@ -128,3 +143,61 @@ ion-textarea {
     color: #707070;
     opacity: 1;
 }
+
+.ion-card-header-green {
+    height: 30px;
+    background: #82B440 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.ion-card-header-yello {
+    height: 30px;
+    background: #FCC845 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+
+ion-crad-content {
+    height: 40px;
+    min-height: 40px;
+    --background: #F5F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+ion-card {
+    width: 100%;
+}
+
+.bar {
+    height: 40px;
+    border: 0.5px solid var(--unnamed-color-469fd1);
+    box-shadow: none;
+    border: 0.5px solid #469FD1;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+// .input-segment {
+//     width: 125px;
+//     height: 40px;
+//     min-height: 10px;
+//     margin-bottom: 10%;
+//     --background: var(--unnamed-color-ffffff) 0% 0% no-repeat padding-box;
+//     border: 0.2px solid var(--unnamed-color-707070);
+//     background: #FFFFFF 0% 0% no-repeat padding-box;
+//     box-shadow: 0px 3px 6px #00000029;
+//     border: 0.20000000298023224px solid #707070;
+//     border-radius: 2px;
+//     opacity: 1;
+
+//     ::placeholder {
+//         color: red;
+//         opacity: 1;
+//     }
+// }
