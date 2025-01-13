@@ -23,6 +23,7 @@ export class NewJobPage implements OnInit {
   iconNameItem: string = 'chevron-down-outline';
   iconNameKyc: string = 'chevron-down-outline';
   iconNameStart: string = 'chevron-down-outline';
+  iconNameFilght: string = 'chevron-down-outline';
 
 
   isRowvisibleCus: boolean = false;
@@ -32,6 +33,7 @@ export class NewJobPage implements OnInit {
   isRowvisibleItem: boolean = false;
   isRowvisibleKyc: boolean = false;
   isRowvisibleStart: boolean = false;
+  isRowvisibleFilght: boolean = false;
 
   constructor(private popoverController: PopoverController) { }
 
@@ -76,6 +78,11 @@ export class NewJobPage implements OnInit {
   toggleRowStart() {
     this.iconNameStart = this.iconNameStart === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isRowvisibleStart = !this.isRowvisibleStart;
+  }
+
+  toggleRowFilght() {
+    this.iconNameFilght = this.iconNameFilght === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
+    this.isRowvisibleFilght = !this.isRowvisibleFilght;
   }
 
   // ฟังก์ชันปิด Popover

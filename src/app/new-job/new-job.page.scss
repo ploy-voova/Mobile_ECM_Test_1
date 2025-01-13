@@ -3,11 +3,21 @@ ion-grid {
 }
 
 .ion-button-blue {
-    width: 160px;
+    // width: 160px;
     height: 40px;
     min-height: 40px;
     --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
     background: #469FD1 0% 0% no-repeat padding-box;
+    border-radius: 2px;
+    opacity: 1;
+}
+
+.ion-button-gray {
+    // width: 160px;
+    height: 40px;
+    min-height: 40px;
+    --background: var(--unnamed-color-469fd1) 0% 0% no-repeat padding-box;
+    background: #ACACAC 0% 0% no-repeat padding-box;
     border-radius: 2px;
     opacity: 1;
 }
