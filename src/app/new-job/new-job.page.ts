@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 
+
 @Component({
   selector: 'app-new-job',
   templateUrl: './new-job.page.html',
@@ -15,6 +16,9 @@ export class NewJobPage implements OnInit {
   date_des: any;
   time_des: any;
   time_d: any;
+
+  timeAc: any;
+  time_a: any;
 
   iconNameCus: string = 'chevron-down-outline'; // ไอคอนเริ่มต้น
   iconNameTran: string = 'chevron-down-outline';
@@ -35,10 +39,19 @@ export class NewJobPage implements OnInit {
   isRowvisibleStart: boolean = false;
   isRowvisibleFilght: boolean = false;
 
+  isdropNote_col1: boolean = false;
+  isdropNote_des1: boolean = false;
+  isdropNote_col2: boolean = false;
+  isdropNote_des2: boolean = false;
+
+  isdropVehicles: boolean = false;
+  isdropAs: boolean = false;
+
   constructor(private popoverController: PopoverController) { }
 
   ngOnInit() {
   }
+
 
   customOptions = {
     header: 'Select an Option',
@@ -85,6 +98,30 @@ export class NewJobPage implements OnInit {
     this.isRowvisibleFilght = !this.isRowvisibleFilght;
   }
 
+  toggleVehicles(){
+    this.isdropVehicles = !this.isdropVehicles;
+  }
+
+  toggleAs(){
+    this.isdropAs = !this.isdropAs;
+  }
+
+  toggleNote_col1(){
+    this.isdropNote_col1 = !this.isdropNote_col1;
+  }
+
+  toggleNote_des1(){
+    this.isdropNote_des1 = !this.isdropNote_des1;
+  }
+
+  toggleNote_col2(){
+    this.isdropNote_col2 = !this.isdropNote_col2;
+  }
+
+  toggleNote_des2(){
+    this.isdropNote_des2 = !this.isdropNote_des2;
+  }
+
   // ฟังก์ชันปิด Popover
   async closePopover() {
     const popover = await this.popoverController.getTop();
@@ -106,7 +143,7 @@ export class NewJobPage implements OnInit {
 
   onTimeChange(event: any) {
     this.time = event.detail.value
-    // console.log(this.time);
+    console.log(this.time);
   }
 
   onTimeChange_Des(event: any) {
@@ -114,15 +151,26 @@ export class NewJobPage implements OnInit {
     // console.log(this.time);
   }
 
+  onTimeChange_Ac(event: any) {
+    this.time_a = event.detail.value
+    // console.log(this.time);
+  }
+
   close_des() {
     this.closePopover();
-    this.time_c = this.formatTime(this.time);
+    this.time_des = this.formatTime(this.time_d);
+    // console.log(this.time_c);
+  }
+
+  close_Ac() {
+    this.closePopover();
+    this.timeAc = this.formatTime(this.time_a);
     // console.log(this.time_c);
   }
 
   close() {
     this.closePopover();
-    this.time_des = this.formatTime(this.time_d);
+    this.time_c = this.formatTime(this.time);
     // console.log(this.time_c);
   }
 
@@ -147,5 +195,7 @@ export class NewJobPage implements OnInit {
       button.classList.toggle('selected', button.getAttribute('value') === selectedValue);
     });
   }
+
+  
 
 }

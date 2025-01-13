@@ -439,14 +439,24 @@ ion-textarea {
 }
 
 .hover-label {
-    color: #000; /* สีปกติ */
-    transition: color 0.3s ease, transform 0.3s ease; /* เพิ่มการเปลี่ยนแบบ Smooth */
-  
+    color: #000;
+    /* สีปกติ */
+    transition: color 0.3s ease, transform 0.3s ease;
+    /* เพิ่มการเปลี่ยนแบบ Smooth */
+
     &:hover {
-      color: #ff5722; /* เปลี่ยนสีเมื่อ hover */
-      transform: scale(1.1); /* ขยายเล็กน้อยเมื่อ hover */
+        color: #ff5722;
+        /* เปลี่ยนสีเมื่อ hover */
+        transform: scale(1.1);
+        /* ขยายเล็กน้อยเมื่อ hover */
     }
-  }
+}
+
+ion-button {
+    --background-activated: transparent;
+    --background-hover: transparent;
+    --ripple-color: transparent;
+}
 
 
 

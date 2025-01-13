@@ -193,6 +193,12 @@ ion-card {
     opacity: 1;
 }
 
+ion-button {
+    --background-activated: transparent;
+    --background-hover: transparent;
+    --ripple-color: transparent;
+}
+
 // .input-segment {
 //     width: 125px;
 //     height: 40px;
