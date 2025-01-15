@@ -199,6 +199,16 @@ ion-button {
     --ripple-color: transparent;
 }
 
+ion-select-option {
+    font: var(--unnamed-font-style-normal) normal var(--unnamed-font-weight-normal) var(--unnamed-font-size-14)/var(--unnamed-line-spacing-19) var(--unnamed-font-family-roboto);
+    letter-spacing: var(--unnamed-character-spacing-0);
+    text-align: left;
+    font: normal normal normal 14px/19px Roboto;
+    letter-spacing: 0px;
+    color: #ACACAC;
+    opacity: 1;
+}
+
 // .input-segment {
 //     width: 125px;
 //     height: 40px;

@@ -51,36 +51,36 @@ export class QuotePreviewPage implements OnInit {
 
   }
 
-  toggleCus(){
+  toggleCus() {
     this.iconNameCus = this.iconNameCus === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropCus = !this.isdropCus;
   }
 
-  toggleTran(){
+  toggleTran() {
     this.iconNameTran = this.iconNameTran === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropTran = !this.isdropTran;
   }
 
-  togglePrice(){
+  togglePrice() {
     this.iconNamePrice = this.iconNamePrice === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropPrice = !this.isdropPrice;
   }
 
-  toggleMisc(){
+  toggleMisc() {
     this.iconNameMisc = this.iconNameMisc === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropMisc = !this.isdropMisc;
   }
 
-  toggleItem(){
+  toggleItem() {
     this.iconNameItem = this.iconNameItem === 'chevron-down-outline' ? 'chevron-up-outline' : 'chevron-down-outline';
     this.isdropItem = !this.isdropItem;
   }
 
-  toggleVehicles(){
+  toggleVehicles() {
     this.isdropVehicles = !this.isdropVehicles;
   }
 
-  toggleAs(){
+  toggleAs() {
     this.isdropAs = !this.isdropAs;
   }
 

@@ -28,9 +28,9 @@ export class HomePage implements OnInit {
   currentWidth: number = 0;
   currentHeight: number = 0;
   quo: q[] = [];
-  qid: string ='';
-  
-  constructor(private platform: Platform,private router: Router) {
+  qid: string = '';
+
+  constructor(private platform: Platform, private router: Router) {
     this.quotebook();
 
     this.platform.ready().then(() => {
@@ -50,21 +50,21 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
-  Topreview(quoteId: string){
+  Topreview(quoteId: string) {
     console.log(quoteId);
-    
-    const data = {q_id: quoteId};
+
+    const data = { q_id: quoteId };
     this.qid = quoteId;
     if (data) {
-      this.router.navigate(['/tabs/quote-preview',quoteId]);
+      this.router.navigate(['/tabs/quote-preview', quoteId]);
     }
-    
+
   }
 
-    quotebook(){
-    
+  quotebook() {
 
-    fetch(baseUrl+'/api/ploy/quote_booking', {
+
+    fetch(baseUrl + '/api/ploy/quote_booking', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { IonSelect, PopoverController } from '@ionic/angular';
+import { baseUrl } from 'BaseUrl';
 
+interface j {
+  jt_id: string; // รหัสของฟีเจอร์หรือบริการ
+  name: string;  // ชื่อของฟีเจอร์หรือบริการ
+  color: string; // สี (ในรูปแบบ Hex เช่น #FFFFFF)
+  priority: number; // ลำดับความสำคัญ (ตัวเลข)
+}
 
 @Component({
   selector: 'app-new-job',
@@ -8,6 +15,13 @@ import { PopoverController } from '@ionic/angular';
   styleUrls: ['./new-job.page.scss'],
 })
 export class NewJobPage implements OnInit {
+
+  @ViewChild('cor2', { static: false }) select2!: IonSelect;
+
+  onFirstSelectChange() {
+    this.select2.interface = 'popover';
+    this.select2.open();
+  }
 
   date_c: any;
   time_c: any;
@@ -47,9 +61,101 @@ export class NewJobPage implements OnInit {
   isdropVehicles: boolean = false;
   isdropAs: boolean = false;
 
-  constructor(private popoverController: PopoverController) { }
+  journey_Type: any;
+  pax: any;
+  car_id: any;
+  vehicle: any;
+  luggage: any;
+
+
+
+  constructor(private popoverController: PopoverController) {
+    this.journeyType();
+  }
 
   ngOnInit() {
+  }
+
+  journeyType() {
+
+    fetch(baseUrl + '/api/ploy/option/journey_type', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // body: JSON.stringify(),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // console.log('Key=====', data);
+        this.journey_Type = (data);
+        console.log(this.journey_Type);
+
+        // localStorage.setItem('keyLogin', data);
+        // const keylogin = localStorage.getItem('keyLogin');
+        // console.log('KeyLoginStorage==', keylogin);
+        // this.router.navigate(['/tabs/home'])
+      })
+      .catch((error) => {
+        alert('ผิด');
+      });
+  }
+
+  Select_Vehicle() {
+    const requestBody = {
+      pax: this.pax,
+    };
+
+    fetch('http://35.187.248.255:214/api/ploy/option/car_type', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.vehicle = (data);
+        this.vehicle = this.vehicle[0];
+        console.log(this.vehicle);
+
+      });
+  }
+
+  select_Luggage(){
+    const requestBody = {
+      pax: this.pax,
+      vehicle: this.car_id
+    };
+
+    fetch('http://35.187.248.255:214/api/ploy/option/bag_type', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        this.luggage = (data);
+        this.luggage = this.luggage[0];
+        console.log(this.luggage);
+
+      });
+  }
+
+  paxChange(event: CustomEvent) {
+    console.log('ionChange fired with value: ' + event.detail.value);
+    this.pax = event.detail.value;
+    // console.log(this.pax);
+    this.Select_Vehicle();
+  }
+
+  vehicleChange(event: CustomEvent) {
+    console.log('vehicle value: ' + event.detail.value);
+    this.car_id = event.detail.value;
+    // console.log(this.car_id);
+    this.select_Luggage();
   }
 
 
@@ -98,27 +204,27 @@ export class NewJobPage implements OnInit {
     this.isRowvisibleFilght = !this.isRowvisibleFilght;
   }
 
-  toggleVehicles(){
+  toggleVehicles() {
     this.isdropVehicles = !this.isdropVehicles;
   }
 
-  toggleAs(){
+  toggleAs() {
     this.isdropAs = !this.isdropAs;
   }
 
-  toggleNote_col1(){
+  toggleNote_col1() {
     this.isdropNote_col1 = !this.isdropNote_col1;
   }
 
-  toggleNote_des1(){
+  toggleNote_des1() {
     this.isdropNote_des1 = !this.isdropNote_des1;
   }
 
-  toggleNote_col2(){
+  toggleNote_col2() {
     this.isdropNote_col2 = !this.isdropNote_col2;
   }
 
-  toggleNote_des2(){
+  toggleNote_des2() {
     this.isdropNote_des2 = !this.isdropNote_des2;
   }
 
@@ -196,6 +302,8 @@ export class NewJobPage implements OnInit {
     });
   }
 
-  
+
+
+
 
 }
